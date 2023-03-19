@@ -1,6 +1,6 @@
-import Link from "next/link";
 import getRandomQuote from "@/lib/getRandomQuote";
 import RefreshButton from "@/components/RefreshButton";
+import CopyButton from "@/components/CopyButton";
 
 export default async function Home() {
   const quoteData: Promise<Quote> = getRandomQuote();
@@ -19,8 +19,13 @@ export default async function Home() {
         </div>
         <div className="w-full flex justify-center">
           <div className="w-1/2 relative">
-            <div className="h-full absolute top-0 right-3">
-              <RefreshButton />
+            <div className="flex items-center justify-end">
+              <div className="mr-2">
+                <RefreshButton />
+              </div>
+              <div>
+                <CopyButton content={`${quote.content} - ${quote.author}`} />
+              </div>
             </div>
           </div>
         </div>
